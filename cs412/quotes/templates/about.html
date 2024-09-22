@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+<h1>About This App</h1>
+{% block content%}
+    <p>This web application displays famous quotes along with images of the people who said or wrote them.</p>
+    
+    <h2>About the People</h2>
+    <ul>
+        <li><strong>Gandhi:</strong> {{ bio.ghandi }}</li>
+        <li><strong>Benjamin Franklin:</strong> {{ bio.franklin }}</li>
+        <li><strong>Ralph Waldo Emerson:</strong> {{ bio.emerson }}</li>
+    </ul>
+{% endblock %}
+
+

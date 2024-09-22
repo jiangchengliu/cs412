@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Quote{% endblock %}</title>
+        {% load static%}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <nav>
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'quote' %}">Random Quote</a>
+            <a href="{% url 'show_all' %}">All Quotes</a>
+            <a href="{% url 'about' %}">About</a>
+        </nav>
+        <div>
+            {% block content %}{% endblock %}
+        </div>
+</html>
