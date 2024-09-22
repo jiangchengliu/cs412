@@ -11,9 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -121,8 +118,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# URL for static files
 STATIC_URL = '/static/'
+
+# Directories where Django will search for additional static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'quotes/static'),  # Adjust to your app's static folder
+]
+
+# Directory where collected static files will be stored in production
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
