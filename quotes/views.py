@@ -22,17 +22,17 @@ QUOTES_IMAGES = list(zip(QUOTES, IMAGES))
 def index(request):
     quote_image = random.choice(QUOTES_IMAGES)
     context = {'quote': quote_image[0], 'image': quote_image[1]}
-    return render(request, 'quote.html', context)
+    return render(request, 'quotes/quote.html', context)
 
 def quote(request):
     quote = random.choice(QUOTES)
     image = random.choice(IMAGES)
     context = {'quote': quote, 'image': image}
-    return render(request, 'quote.html', context)
+    return render(request, 'quotes/quote.html', context)
 
 def show_all(request):
     context = {'quotes_images': QUOTES_IMAGES}
-    return render(request, 'show_all.html', context)
+    return render(request, 'quotes/show_all.html', context)
 
 
 def about(request):
@@ -44,4 +44,4 @@ def about(request):
             'emerson': 'Ralph Waldo Emerson was an American essayist, lecturer, philosopher, and poet, who led the transcendentalist movement of the mid-19th century.'
         }
     }
-    return render(request, 'about.html', context)
+    return render(request, 'quotes/about.html', context)
