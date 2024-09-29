@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+img {
+    max-width: 300px;
+    display: block;
+    margin: 50px;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+ul li {
+    list-style-type: none; 
+    margin: 10px;
+    text-align: center;    
+}
+
+
+ul li:not(#extra-meat) {
+    padding: 5px;       
+    border: 1px solid #ccc; 
+    width: 100;
+}
