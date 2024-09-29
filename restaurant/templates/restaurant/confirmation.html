@@ -1,0 +1,26 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+<h1>Order Confirmation</h1>
+
+{% block content %}
+    {% if ordered%}
+        <p>Thank you for your order, {{ customer_name }}!</p>
+        <p>We will contact you at {{ customer_phone }} or {{ customer_email }} if we have any questions.</p>
+        <p>ETA: {{ ready }}</p>
+        <p>Your order:</p>
+        <ul>
+            {% for item in ordered_items %}
+                <li> {{item.name}} </li>
+                {% if item.name == "Spicy Miso Pork Donburi" %}
+                    {% if extra %}
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;Extra Meat</li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <p>Total: ${{ total_price|floatformat:2 }}</p>
+    {% else %}
+        <p>Please make an order!</p>
+    {% endif %}
+{% endblock %}

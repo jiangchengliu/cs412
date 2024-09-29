@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}App{% endblock %}</title>
+    {% load static %}  
+    <link rel="stylesheet" href= {% static 'rename/styles.css' %}>
+    
+</head>
+<body>
+    <nav>
+        <a href="{% url 'main' %}">Main</a>
+        <a href="{% url 'order' %}">Order</a>
+    </nav>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+    <script src="{% static 'util.js' %}"></script>
+</body>
+</html>

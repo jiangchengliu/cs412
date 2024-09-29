@@ -1,0 +1,31 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div>
+        <h1>Futago Udon</h1>
+    </div>
+
+    <img src="{% static 'images/futago.jpeg' %}" alt="Image of Futago Udon">
+
+    <div class="restaurant-info">
+        <h2>Location</h2>
+        <p>508-512 Park Dr, Boston, MA 02115</p>
+
+        <h2>Hours</h2>
+        <ul>
+            <li>Friday: 12:00 PM – 8:30 PM</li>
+            <li>Saturday: 12:00 PM – 8:30 PM</li>
+            <li>Sunday: 12:00 PM – 8:30 PM</li>
+            <li>Monday: Closed</li>
+            <li>Tuesday: 12:00 PM – 8:30 PM</li>
+            <li>Wednesday: 12:00 PM – 8:30 PM</li>
+            <li>Thursday: 12:00 PM – 8:30 PM</li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>(617) 505-6157</p>
+    </div>
+
+{% endblock %}

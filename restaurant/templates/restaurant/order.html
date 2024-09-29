@@ -1,0 +1,49 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+{% block title %}Order Page{% endblock %}
+
+{% block content %}
+    <h2>Place Your Order</h2>
+
+    <form action="{% url 'confirmation' %}" method="post">
+        {% csrf_token %}
+        <h3>Menu</h3>
+        <div id="menu-items">
+            <label>
+                <input type="checkbox" id="spicy-miso-checkbox" name="Spicy Miso Pork Donburi"> 
+                Spicy Miso Pork Donburi - $15.00
+            </label><br>
+            
+            <div id="extra-meat" style="display: none;">
+                <label>
+                    <input type="checkbox" name="Extra Meat"> Extra Meat (+$3.00)
+                </label><br>
+            </div>
+            
+            <label><input type="checkbox" name="Takoyaki"> Takoyaki - $9.00</label><br>
+            <label><input type="checkbox" name="Seaweed Salad"> Seaweed Salad - $7.00</label><br>
+            <label><input type="checkbox" name="Niku Udon"> Niku Udon - $22.00</label><br>
+        </div>
+
+        <h3>Daily Special</h3>
+        <label>
+            <input type="checkbox" name="daily_special">
+            {{ daily_special.name }} - ${{ daily_special.price }}
+        </label><br>
+        
+
+        <input type="hidden" name="special_name" value="{{ daily_special.name }}">
+        <input type="hidden" name="special_price" value="{{ daily_special.price }}">
+
+        <h3>Special Instructions</h3>
+        <textarea name="special_instructions" placeholder="Any special requests?"></textarea><br>
+
+        <h3>Customer Information</h3>
+        <label>Name: <input type="text" name="customer_name" required></label><br>
+        <label>Phone: <input type="text" name="customer_phone" required></label><br>
+        <label>Email: <input type="email" name="customer_email" required></label><br>
+
+        <button type="submit">Submit Order</button>
+    </form>
+{% endblock %}
