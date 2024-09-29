@@ -78,7 +78,6 @@ def confirmation(request):
         'extra': extra,
         'ready': ready_time
     }
-    print(context)
 
     return render(request, 'restaurant/confirmation.html', context)
 

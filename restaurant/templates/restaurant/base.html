@@ -6,7 +6,6 @@
     <title>{% block title %}App{% endblock %}</title>
     {% load static %}  
     <link rel="stylesheet" href= {% static 'rename/styles.css' %}>
-    
 </head>
 <body>
     <nav>
@@ -16,6 +15,6 @@
     <div>
         {% block content %}{% endblock %}
     </div>
-    <script src="{% static 'util.js' %}"></script>
+    <script src="{% static 'jss/util.js' %}"></script>
 </body>
 </html>
