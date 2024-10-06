@@ -1,0 +1,33 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini FB App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mini_fb_css.css' %}">
+</head>
+<body>
+
+    <!-- Standard header -->
+    <header>
+        <h1>Mini FB Application</h1>
+    </header>
+
+    <!-- Navigation links -->
+    <nav>
+    </nav>
+
+    <div>
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Mini FB Application</p>
+    </footer>
+
+</body>
+</html>
