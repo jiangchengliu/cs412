@@ -1,0 +1,15 @@
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+    <h2>Create a Profile</h2>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Create Profile">
+    </form>
+    <form action="/mini_fb/" method="get">
+        <input type="submit" value="Cancel" />
+    </form>
+{% endblock %}
