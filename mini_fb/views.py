@@ -66,7 +66,7 @@ class CreateProfileView(CreateView):
     # The fields that will be displayed in the form for creating a new profile.
     fields = ['first_name', 'last_name', 'email', 'image_url', 'city']
     # The template that will be rendered for this view.
-    template_name = "mini_fb/create_profile.html"
+    template_name = "mini_fb/create_profile_form.html"
 
 
 class CreateStatusView(CreateView):
@@ -81,7 +81,7 @@ class CreateStatusView(CreateView):
     # The fields that will be displayed in the form for creating a new status message.
     fields = ['status_message']
     # The template that will be rendered for this view.
-    template_name = "mini_fb/create_status.html"
+    template_name = "mini_fb/create_status_form.html"
     
 
     def form_valid(self, form):
