@@ -5,9 +5,10 @@
 from django.shortcuts import render
 from .models import Profile, StatusMessage
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .forms import StatusMessageForm
 from django.urls import reverse
+from .models import Image
 
 # Create your views here.
 
@@ -92,7 +93,13 @@ class CreateStatusView(CreateView):
         profile = Profile.objects.get(pk=self.kwargs['pk'])
         # Set the profile for the status message
         form.instance.profile = profile
-        # Call the parent class' form_valid method to save the form
+        
+        sm = form.save()
+        files = self.request.FILES.getlist('files')
+        for f in files:
+            image = Image.objects.create(img=f, message=sm)
+            image.save()
+    
         return super().form_valid(form)
 
     def get_success_url(self):
@@ -116,6 +123,68 @@ class CreateStatusView(CreateView):
         context['profile'] = profile
         return context
 
-        
+class UpdateProfileView(UpdateView):
+    """
+    View that handles updating a profile.
+    """
+    model = Profile
+    fields = ['email', 'image_url', 'city']
+    template_name = "mini_fb/update_profile_form.html"
+    
+    def get_success_url(self):
+        """
+        Override the get_success_url method to redirect to the profile page after updating the profile.
+        """
+        return reverse('show_profile', kwargs={'pk': self.object.pk})
+    
+    def get_context_data(self, **kwargs):
+        """
+        Override the get_context_data method to include the profile object in the context.
+        """
+        context = super().get_context_data(**kwargs)
+        context['profile'] = self.object
+        return context
 
 
+class DeleteStatusView(DeleteView):
+    """
+    View that handles deleting a status message.
+    """
+    model = StatusMessage
+    template_name = "mini_fb/delete_status_form.html"
+    
+    def get_success_url(self):
+        """
+        Override the get_success_url method to redirect to the profile page after deleting the status message.
+        """
+        return reverse('show_profile', kwargs={'pk': self.object.profile.pk})
+
+    def get_context_data(self, **kwargs):
+        """
+        Override the get_context_data method to include the profile object in the context.
+        """
+        context = super().get_context_data(**kwargs)
+        context['profile'] = self.object.profile
+        return context
+
+class UpdateStatusView(UpdateView):
+    """
+    View that handles updating a status message.
+    """
+    model = StatusMessage
+    fields = ['status_message']
+    template_name = "mini_fb/update_status_form.html"
+    
+    def get_success_url(self):
+        """
+        Override the get_success_url method to redirect to the profile page after updating the status message.
+        """
+        return reverse('show_profile', kwargs={'pk': self.object.profile.pk})
+    
+    def get_context_data(self, **kwargs):
+        """
+        Override the get_context_data method to include the profile object in the context.
+        """
+        context = super().get_context_data(**kwargs)
+        context['profile'] = self.object.profile
+        return context

@@ -17,3 +17,11 @@ class StatusMessageForm(forms.ModelForm):
     class Meta:
         model = StatusMessage
         fields = ['status_message']
+
+class UpdateProfileForm(forms.ModelForm):
+    """
+    Form for updating a profile.
+    """
+    class Meta:
+        model = Profile
+        fields = ['email', 'image_url', 'city']

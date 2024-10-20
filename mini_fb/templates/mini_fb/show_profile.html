@@ -5,6 +5,7 @@
     <nav>
         <ul>
             <li><a href="{% url 'create_status' profile.id %}">Create Status</a></li>
+            <li><a href="{% url 'update_profile' profile.id %}">Update Profile</a></li>
         </ul>
     </nav>
     <img src="{{ profile.image_url }}" alt="{{ profile.first_name }}'s profile picture" style="width:200px;height:200px;">
@@ -22,9 +23,24 @@
     <ul>
         {% for status in status_messages %}
             <li>{{ status.created_at }} - {{ status.status_message }}</li>
+            <div id="delete-update-container">
+                <nav class="delete">
+                    <a href="{% url 'delete_status' status.pk %}">Delete</a>
+                </nav>
+                <nav class="update">
+                    <a href="{% url 'update_status' status.pk %}">Update</a>
+                </nav>
+            </div>
+            {% for img in status.get_images %}
+                <div id="status-image-container">
+                    <img src='{{ img.img.url }}' alt='{{ img.img.url }}'>
+                </div>
+            {% empty %}
+                <li>No images available for this status message.</li>
+            {% endfor %}
         {% empty %}
             <li>No status messages available.</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'show_all_profiles' %}">Back to all profiles</a>
+    
 {% endblock %}

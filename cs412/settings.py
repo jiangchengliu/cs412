@@ -134,6 +134,9 @@ STATIC_URL = '/static/'
 # Optional: If you want to collect static files into one directory for production, set STATIC_ROOT
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+
 # You can leave STATICFILES_DIRS empty for app-level static files to be served correctly
 STATICFILES_DIRS = []
 

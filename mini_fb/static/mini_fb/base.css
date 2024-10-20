@@ -108,4 +108,48 @@ input[type="submit"]:hover {
     background-color: lightblue; 
 }
 
+#delete-update-container {
+    display: flex; 
+    justify-content: left; 
+    margin: 10px 0; 
+}
+
+.delete a {
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+}
+
+.delete a:hover {
+    background-color: #357ABD;
+    color: white;
+    
+}
+
+/* Styling for update link */
+.update a {
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+}
+
+.update a:hover {
+    background-color: #357ABD;
+    color: white;
+}
+
+#status-image-container {
+    display: inline-block;
+}
+
+#status-image-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+
+
 
