@@ -13,7 +13,7 @@
                     </a>
                 </br>
                     <a href="{% url 'add_friend' profile.id friend.id %}">Add Friend</a>
-                    <img src="{{ friend.image_url }}" alt="{{ friend.first_name }}'s profile picture" style="width:200px;height:200px;"/>
+                    <img src="{{ friend.image_url }}" alt="{{ friend.first_name }}'s profile picture" style="width:100px;height:100px;"/>
                 </li>
             {% endfor %}
         </ul>

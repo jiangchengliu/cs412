@@ -6,7 +6,24 @@ body {
     display: flex;
     flex-direction: column; 
     min-height: 100vh; 
-    background-color: yellow;
+    background-color: aliceblue;
+}
+
+a {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+a:hover {
+    color: inherit; 
+}
+
+a:visited {
+    color: inherit;=
+}
+
+a:active {
+    color: inherit; 
 }
 
 
