@@ -8,7 +8,7 @@
             {% for status in statuses %}
                 <li>
                     <img src="{{ status.profile.image_url }}" 
-                         alt="{{ status.profile.first_name }} {{ status.profile.last_name }}'s profile picture"/>
+                         alt="{{ status.profile.first_name }} {{ status.profile.last_name }}'s profile picture"/ style="width:100px;height:100px;">
                     <strong>{{ status.author.first_name }} {{ status.author.last_name }}</strong>: 
                     {{ status.status_message }} <br>  
                     <small>Posted on {{ status.created_at }}</small>  

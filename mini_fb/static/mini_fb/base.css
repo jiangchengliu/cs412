@@ -11,19 +11,6 @@ body {
 
 a {
     text-decoration: none; 
-    color: inherit; 
-}
-
-a:hover {
-    color: inherit; 
-}
-
-a:visited {
-    color: inherit;=
-}
-
-a:active {
-    color: inherit; 
 }
 
 
@@ -52,6 +39,10 @@ footer {
 nav {
     text-align: center;
     padding: 10px;
+}
+
+ul {
+    list-style-type: none;
 }
 
 nav > ul {
