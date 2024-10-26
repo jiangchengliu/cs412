@@ -5,9 +5,10 @@
 from django.shortcuts import render
 from .models import Profile, StatusMessage
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, View
 from .forms import StatusMessageForm
 from django.urls import reverse
+from django.shortcuts import redirect
 from .models import Image
 
 # Create your views here.
@@ -187,4 +188,46 @@ class UpdateStatusView(UpdateView):
         """
         context = super().get_context_data(**kwargs)
         context['profile'] = self.object.profile
+        return context
+
+class CreateFriendView(View):
+    """
+    View that handles creating a friendship between two profiles.
+    """
+    def dispatch(self, request, *args, **kwargs):
+        profile = Profile.objects.get(pk=kwargs['pk'])
+        other_profile = Profile.objects.get(pk=kwargs['other_pk'])
+        profile.add_friend(other_profile)
+        return  redirect('show_profile', pk=profile.pk)
+
+class ShowFriendSuggestionsView(DetailView):
+    model = Profile
+    template_name = "mini_fb/friend_suggestions.html"
+    context_object_name = "profile"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['friends'] = self.object.get_friend_suggestions()
+        return context
+
+    
+from django.views.generic import DetailView
+from .models import Profile
+
+class ShowNewsFeedView(DetailView):
+    model = Profile
+    template_name = "mini_fb/news_feed.html"
+    context_object_name = "profile"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        # Retrieve the profile using self.object instead of querying again
+        profile = self.object
+        
+        # Get statuses using the method defined in the Profile model
+        statuses = profile.get_news_feed()
+        
+        # Adding statuses and profile to the context
+        context['statuses'] = statuses
         return context

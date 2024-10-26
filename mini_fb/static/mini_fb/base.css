@@ -6,8 +6,9 @@ body {
     display: flex;
     flex-direction: column; 
     min-height: 100vh; 
-    background-color: aliceblue;
+    background-color: yellow;
 }
+
 
 h1, h2 {
     color: black;
@@ -42,6 +43,7 @@ nav > ul {
     margin: 0;
     display: inline-block;
     background-color: blue;
+    text-decoration: none;
 }
 
 nav > ul > li {
@@ -148,6 +150,8 @@ input[type="submit"]:hover {
     height: auto;
     border-radius: 5px;
 }
+
+
 
 
 
