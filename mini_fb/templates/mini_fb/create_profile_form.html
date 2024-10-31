@@ -2,11 +2,18 @@
 
 {% block content %}
     <h2>Create a Profile</h2>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        <h3>Create User</h3>
         <table>
-            {{ form.as_table }}
+            {{ user_creation_form.as_table }}  
         </table>
+
+        <h3>Create Profile</h3>
+        <table>
+            {{ form.as_table }}  
+        </table>
+
         <input type="submit" value="Create Profile">
     </form>
     <form action="/mini_fb/" method="get">
