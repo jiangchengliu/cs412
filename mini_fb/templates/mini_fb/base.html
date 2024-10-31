@@ -19,8 +19,12 @@
     <!-- Navigation links -->
     <nav>
         <ul>
-            <li><a href="{% url 'show_all_profiles' %}">All Profiles</a></li>
-            <li><a href="{% url 'create_profile' %}">Create Profile</a></li>
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'show_all_profiles' %}">All Profiles</a></li>
+            {% else %}
+                <li><a href="{% url 'show_all_profiles' %}">All Profiles</a></li>
+                <li><a href="{% url 'create_profile' %}">Create Profile</a></li>
+            {% endif %}
         </ul>
         <p>
             {% if request.user.is_authenticated %}

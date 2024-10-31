@@ -13,6 +13,7 @@ from .forms import CreateProfileForm
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
 from .models import Image
+from django.contrib.auth import login
 
 # Create your views here.
 
@@ -75,31 +76,25 @@ class CreateProfileView(CreateView):
     model = Profile
     form_class = CreateProfileForm
     template_name = 'mini_fb/create_profile_form.html'
-    
-    
-    def success_url(self):
-        return reverse('login')
+
+
+    def get_success_url(self):
+        success_url = reverse('show_all_profiles')
+        return success_url
 
     def get_context_data(self, **kwargs):
-        # Call the superclass method first to get the context
         context = super().get_context_data(**kwargs)
-        # Create an instance of UserCreationForm and add it to the context
         context['user_creation_form'] = UserCreationForm()
         return context
-    
-    def get_success_url(self):
-        return reverse('show_profile', kwargs={'pk': self.object.pk})
 
     def form_valid(self, form):
-        # Get the user creation form data
         user_creation_form = UserCreationForm(self.request.POST)
-
         if user_creation_form.is_valid():
-            # Save the user instance and attach it to the profile
             user = user_creation_form.save()
             profile = form.instance
-            profile.user = user  
-            profile.save()  
+            profile.user = user
+            profile.save()
+            login(self.request, user)
             return super().form_valid(form)
         else:
             return self.render_to_response(self.get_context_data(form=form, user_creation_form=user_creation_form))
