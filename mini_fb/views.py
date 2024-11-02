@@ -56,8 +56,12 @@ class ShowProfilePageView(DetailView):
         Returns the Profile object that the view is displaying.
         This can be customized to retrieve a specific profile.
         """
-        # Get the primary key of the profile fr
-        return Profile.objects.get(user=self.request.user)
+        #if it is the user's profile, return the user's profile
+        if self.request.user.pk == self.kwargs['pk']:
+            return Profile.objects.get(user=self.request.user)
+        else:
+            return Profile.objects.get(pk=self.kwargs['pk'])
+        
     
     # Override the get_context_data method to include custom data in the context
     def get_context_data(self, **kwargs):
@@ -69,8 +73,6 @@ class ShowProfilePageView(DetailView):
         
         return context
 
-    def get_login_url(self):
-        return reverse_lazy('mini_fb/login')
 
 class CreateProfileView(CreateView):
     model = Profile
@@ -122,7 +124,7 @@ class CreateStatusView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['profile'] = self.get_object()  # Pass profile to context
+        context['profile'] = self.get_object()  
         return context
 
 
