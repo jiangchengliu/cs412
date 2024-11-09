@@ -1,0 +1,107 @@
+{% extends 'voter_analytics/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Voter Details</h1>
+
+    <table class="table" id="detail-table">
+        <tr>
+            <th>Name:</th>
+            <td>{{ voter.first_name }} {{ voter.last_name }}</td>
+        </tr>
+        <tr>
+            <th>Street Address:</th>
+            <td>{{ voter.street_number }} {{ voter.street_name }} 
+                {% if voter.apartment_number %}Apt {{ voter.apartment_number }}{% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Date of Birth:</th>
+            <td>{{ voter.date_of_birth }}</td>
+        </tr>
+        <tr>
+            <th>Party Affiliation:</th>
+            <td>{{ voter.party_affiliation }}</td>
+        </tr>
+        <tr>
+            <th>Voter Score:</th>
+            <td>{{ voter.voter_score }}</td>
+        </tr>
+        <tr>
+            <th>Voter Registration Date:</th>
+            <td>{{ voter.registration_date }}</td>
+        </tr>
+
+        <!-- Voted in elections (True/False values displayed) -->
+        <tr>
+            <th>Voted in 2020 State Election:</th>
+            <td>
+                {% if voter.v20state %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Voted in 2021 Town Election:</th>
+            <td>
+                {% if voter.v21town %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Voted in 2021 Primary Election:</th>
+            <td>
+                {% if voter.v21primary %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Voted in 2022 General Election:</th>
+            <td>
+                {% if voter.v22general %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Voted in 2023 Town Election:</th>
+            <td>
+                {% if voter.v23town %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}
+            </td>
+        </tr>
+
+        <!-- Link to Google Maps with Voter's address -->
+        <tr>
+            <th>Address on Google Maps:</th>
+            <td>
+                <a href="https://www.google.com/maps?q={{ voter.street_number }}+{{ voter.street_name }}+{{ voter.apartment_number|default:'' }}" target="_blank">
+                    View Address on Map
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Navigation Links -->
+    <div class="row">
+        <a href="{% url 'voters' %}" class="btn btn-primary">Back to Voter List</a>
+    </div>
+
+</div>
+
+{% endblock %}
+
