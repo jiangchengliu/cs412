@@ -127,9 +127,9 @@ class GraphsView(ListView):
         # Add the filtered voters to context
         context['voters'] = queryset
 
-        #Histogram of Voters by Year of Birth
+        
         years_of_birth = queryset.values_list('date_of_birth__year', flat=True)
-        year_count = dict(Counter(years_of_birth))  # Use Counter to count occurrences
+        year_count = dict(Counter(years_of_birth))  
         years = list(year_count.keys())
         counts = list(year_count.values())
 
@@ -138,7 +138,7 @@ class GraphsView(ListView):
         context['bar_div'] = bar_div
 
         # Pie chart of Voters by Party Affiliation
-        party_count = queryset.values('party_affiliation').annotate(count=Count('party_affiliation'))  # Correct usage of Count
+        party_count = queryset.values('party_affiliation').annotate(count=Count('party_affiliation')) 
         party_labels = [item['party_affiliation'] for item in party_count]
         party_values = [item['count'] for item in party_count]
 
