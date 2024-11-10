@@ -93,11 +93,11 @@ class GraphsView(ListView):
         min_dob = self.request.GET.get('min_dob')
         max_dob = self.request.GET.get('max_dob')
         voter_score = self.request.GET.get('voter_score')
-        v20state = self.request.GET.get('v20state') == 'on'
-        v21town = self.request.GET.get('v21town') == 'on'
-        v21primary = self.request.GET.get('v21primary') == 'on'
-        v22general = self.request.GET.get('v22general') == 'on'
-        v23town = self.request.GET.get('v23town') == 'on'
+        v20state = self.request.GET.get('v20state') == '1'
+        v21town = self.request.GET.get('v21town') == '1'
+        v21primary = self.request.GET.get('v21primary') == '1'
+        v22general = self.request.GET.get('v22general') == '1'
+        v23town = self.request.GET.get('v23town') == '1'
 
         # Apply filtering logic
         filter_conditions = Q()
