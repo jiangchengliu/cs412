@@ -1,0 +1,161 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: greenyellow;
+    color: limegreen;
+}
+
+a {
+    color: green;
+    text-decoration: none;
+}
+
+a:hover {
+    color: lime;
+    text-decoration: underline;
+}
+
+.navbar-container {
+    background-color: black;
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.main-content {
+    max-width: 1000px;
+    margin: 25px auto;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+button {
+    background-color: forestgreen;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkgreen;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    border: 1px solid lightgray;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: forestgreen;
+    color: white;
+    text-transform: uppercase;
+}
+
+.logout-container, .login-container, .registration-container, .update-profile-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.profile-info {
+    flex: 3;
+    margin-right: 15px;
+}
+
+.profile-actions {
+    flex: 1;
+    text-align: right;
+}
+
+.stock-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stock {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 10px;
+    flex: 1 1 300px;
+    background-color: whitesmoke;
+}
+
+.stock h2 {
+    margin: 0;
+    font-size: 18px;
+    color: darkgray;
+}
+
+.stock p {
+    margin: 5px 0;
+}
+
+.portfolio-container, .watch-list-container {
+    text-align: center;
+    margin-top: 20px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.portfolio-container ul, .watch-list-container ul {
+    list-style: none;
+    padding: 0;
+}

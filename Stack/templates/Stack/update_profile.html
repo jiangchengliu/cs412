@@ -1,0 +1,12 @@
+{% extends 'Stack/base.html' %}
+
+{% block content %}
+    <h1>Update Profile</h1>
+    <div class="update-profile-container">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update</button>
+        </form>
+    </div>
+{% endblock %}

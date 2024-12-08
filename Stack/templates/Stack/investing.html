@@ -1,0 +1,38 @@
+{% extends 'Stack/base.html' %}
+
+{% block content %}
+    <h1>Investing: ${{ investing }}</h1>
+    <div class="chart-container">
+        <div>
+            {{ bar_chart |safe}}
+        </div>
+    </div>
+
+
+    <div class="portfolio-watchlist-containerr">
+        <!-- Portfolio Section -->
+    <div class="portfolio-container">
+        <h2>Portfolio</h2>
+        <ul>
+            {% for item in portfolios %}
+                <li>
+                    {{ item.stock }} - {{ item.quantity }} shares at ${{ item.stock.price }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="watch-list-container">
+        <h2>Watchlist</h2>
+        <ul>
+            {% for item in watchlist_items %}
+                <li>
+                    {{ item.stock }} - Current Price: ${{ item.stock.price }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+    
+
+{% endblock %}

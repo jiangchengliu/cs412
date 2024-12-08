@@ -1,0 +1,14 @@
+{% extends 'Stack/base.html' %}
+
+{% block content %}
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="hidden" name="next" value="{% url 'investing' %}">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+{% endblock %}
+

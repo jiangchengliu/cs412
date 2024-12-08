@@ -1,0 +1,17 @@
+{% extends 'Stack/base.html'%}
+
+{% block content %}
+    <h1>{{ profile.user.username }}</h1>
+    <div class="profile-container">
+        <div class="profile-info">
+            <h2>Profile</h2>
+            <p>First Name: {{ profile.first_name }}</p>
+            <p>Last Name: {{ profile.last_name }}</p>
+            <p>Email: {{ profile.email }}</p>
+        </div>
+        <div class="profile-actions">
+            <h2>Actions</h2>
+            <a href="{% url 'update_profile' %}">Edit Profile</a>
+        </div>
+    </div>
+{% endblock %}

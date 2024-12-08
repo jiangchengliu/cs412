@@ -1,0 +1,29 @@
+{% extends "Stack/base.html" %}
+
+{% block content %}
+    <h1>Transactions</h1>
+    <div class="transactions-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Stock</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                    <tr>
+                        <td>{{ transaction.stock }}</td>
+                        <td>{{ transaction.quantity }}</td>
+                        <td>{{ transaction.price }}</td>
+                        <td>{{ transaction.created_at }}</td>
+                        <td>{{ transaction.transaction_type }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

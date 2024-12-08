@@ -1,0 +1,48 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack - Investment App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Stack/base.css' %}">
+</head>
+<body>
+
+    <!-- Navigation links -->
+    <div class="navbar-container">
+        <div class="logo">
+            <img src="https://openclipart.org/download/320176/symbol-money-yen-clipart-pdwikinedia.svg" alt="Stack Logo">
+        </div>
+        <nav class="navbar">
+            {% if user.is_authenticated %}
+                <ul>
+                    <li><a href="{% url 'investing' %}"</a>Investing</li>
+                    <li><a href="{% url 'stock_list' %}">Stock List</a></li>
+                    <li><a href="{% url 'transaction_list' %}">Transactions</a></li>
+                    <li>
+                        <a href="{% url 'profile'%}">
+                            <img src="{{ request.user.stack_user_profile.image_url }}" alt="Profile" width="30" height="30">
+                        </a>
+                    </li>
+                    <li><a href="{% url 'stack_logout' %}">Logout</a></li>
+                </ul>
+            {% else %}
+                <ul>
+                    <li><a href="{% url 'stack_login' %}">Login</a></li>
+                    <li><a href="{% url 'stack_register' %}">Register</a></li>
+                </ul>
+            {%endif%}
+        </nav>
+    </div>
+
+
+    <div class="main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

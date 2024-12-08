@@ -1,0 +1,39 @@
+{% extends 'Stack/base.html' %}
+
+{% block content %}
+
+    <div class="stock-container">
+
+        <div class="stock-info">
+            <h1>{{ stock.name }}</h1>
+            <p>{{ stock.ticker }}</p>
+            <p>{{ stock.price }}</p>
+            <p>Shares: {{ shares_owned }}</p>
+        </div>
+
+        <div class="stock-actions">
+            <form action="{% url 'buy_stock' stock.pk %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="stock_id" value="{{ stock.id }}">
+                <input type="number" name="quantity" placeholder="Quantity">
+                <button type="submit">Buy</button>
+            </form>
+
+            <form action="{% url 'sell_stock' stock.pk %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="stock_id" value="{{ stock.id }}">
+                <input type="number" name="quantity" placeholder="Quantity">
+                <button type="submit">Sell</button>
+            </form>'
+            
+            <form action="{% url 'add_to_watchlist' stock.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="stock_id" value="{{ stock.id }}">
+                <button type="submit">Add to Watchlist</button>
+            </form>
+        </div>
+    
+    </div>
+
+
+{% endblock %}

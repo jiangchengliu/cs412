@@ -1,0 +1,40 @@
+{% extends 'Stack/base.html' %}
+
+{% block content %}
+
+<h1>Stocks</h1>
+
+<div class="stock-search-container">
+    <form method="GET" action="">
+        <input type="text" name="q" placeholder="Search stocks" value="{{ request.GET.q }}">
+        <button type="submit">Search</button>
+    </form>
+</div>
+<div class="stock-list-container">
+    {% for stock in object_list %}
+        <div class="stock">
+            <h2>{{ stock.name }}</h2>
+            <p>{{ stock.ticker }}</p>
+            <p>{{ stock.price }}</p>
+            <a href="{% url 'stock_detail' stock.pk %}">View</a>
+        </div>
+    {% endfor %}
+</div>
+
+{% if is_paginated %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">First</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+    </div>
+{% endif %}
+
+{% endblock %}
