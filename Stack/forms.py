@@ -1,3 +1,9 @@
+# File: models.py
+# Author: Jiang Cheng Liu (jiangcl@bu.edu)
+# Date: 12/10/2024
+# Description: django forms utilized in the views, used to create and update user profiles.
+
+
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User

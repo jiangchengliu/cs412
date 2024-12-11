@@ -1,3 +1,12 @@
+# File: urls.py 
+# Author: Jiang Cheng Liu (jiangcl@bu.edu), 12/10/2024 
+# Description: url paths for the stack, 
+# including the home page, investing page, stock list page, s
+# tock detail page, buy stock page, sell stock page, 
+# add to watchlist page, transaction list page, 
+# register page, login page, logout page, profile page, 
+# and update profile page.
+
 from django.urls import path
 from . import views
 from django.contrib.auth.views import LoginView, LogoutView

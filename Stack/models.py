@@ -1,10 +1,18 @@
+# File: models.py 
+# Author: Jiang Cheng Liu (jiangcl@bu.edu), 12/10/2024 
+# Description: models for the stack, including Profile, Stock, Portfolio, Transaction, and Watchlist.
+#             Profile: user profile model, including first name, last name, email, image_url, user, and balance.
+#             Stock: stock model, including ticker, name, and price.
+#             Portfolio: portfolio model, including user, stock, and quantity.
+#             Transaction: transaction model, including user, stock, quantity, price, created_at, and transaction_type.
+#             Watchlist: watchlist model, including user and stock.
+
+
 from django.db import models
 from django.contrib.auth.models import User
 
 
 # Create your models here.
-#Stock Investment App
-
 class Profile(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)

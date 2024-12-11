@@ -1,4 +1,20 @@
 # views.py
+# File: views.py 
+# Author: Jiang Cheng Liu (jiangcl@bu.edu), 12/10/2024 
+# Description: views for the application using function and class based views.
+# views include: 
+# displaying list of stocks
+# displaying stock details
+# displaying user profile
+# displaying user transactions
+# displaying user investing page
+# buying a stock
+# selling a stock
+# adding a stock to watchlist
+# creating a user profile
+# updating a user profile
+
+
 from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
